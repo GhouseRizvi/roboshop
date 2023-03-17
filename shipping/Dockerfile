@@ -1,7 +1,7 @@
 #
 # Build
 #
-FROM debian:10-slim AS build
+FROM debian:10 AS build
 
 RUN apt-get update && apt-get -y install maven
 
@@ -19,7 +19,7 @@ FROM openjdk:8-jre-alpine
 
 EXPOSE 8080
 
-WORKDIR /opt/shipping
+WORKDIR /opt/shipping 
 
 ENV CART_ENDPOINT=cart:8080
 ENV DB_HOST=mysql
