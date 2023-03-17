@@ -41,3 +41,14 @@ services:
     depends_on:
       - redis
       - catalogue
+
+  mysql:
+    image: mysql:v1
+    container_name: mysqldb
+    
+
+  shipping:
+    image: shipping:v1
+    container_name: shipping
+    depends_on:
+      - mysqldb
