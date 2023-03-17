@@ -22,6 +22,8 @@ services:
       - "2003:80"
     depends_on:
       - catalogue
+      - user
+      - cart
 
   redis:
     image: redis
