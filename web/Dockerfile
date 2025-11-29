@@ -1,8 +1,12 @@
-
 FROM nginx
-RUN rm -rf /usr/share/nginx/html/index.html
-RUN rm -rf /etc/nginx/nginx.conf
-RUN rm -rf /etc/nginx/conf.d/default.conf
+
+# Remove default files
+RUN rm -f /usr/share/nginx/html/index.html /etc/nginx/conf.d/default.conf
+
+# Copy nginx configuration
 COPY default.conf /etc/nginx/nginx.conf
-ADD static /usr/share/nginx/html/
-#ENV CATALOGUE_HOST=catalogue
+
+# Copy static files
+COPY static /usr/share/nginx/html/
+
+ENV CATALOGUE_HOST=catalogue
