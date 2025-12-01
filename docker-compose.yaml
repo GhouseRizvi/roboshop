@@ -22,6 +22,8 @@ services:
       - catalogue
       - user
       - cart
+      - shipping
+      - mysql
     
   redis:
     image: redis
