@@ -15,7 +15,7 @@ RUN mvn package
 #
 # Runtime Stage
 #
-FROM openjdk:8-jre-alpine  # Alpine version is available
+FROM openjdk:8-jre-alpine 
 
 EXPOSE 8080
 
