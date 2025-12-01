@@ -1,13 +1,25 @@
-FROM nginx:alpine
+FROM almalinux:8
 
-# Remove default Nginx configuration
-RUN rm -rf /etc/nginx/conf.d/default.conf
+# Update and install nginx
+RUN dnf update -y && \
+    dnf install -y nginx && \
+    dnf clean all
 
-# Copy custom Nginx configuration
-COPY default.conf /etc/nginx/conf.d/
+# Remove default files
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy nginx configuration
+COPY default.conf /etc/nginx/nginx.conf
 
 # Copy static files
 COPY static /usr/share/nginx/html/
 
-# Set environment variable
-ENV CATALOGUE_HOST=catalogue
+# Set permissions
+RUN chown -R nginx:nginx /usr/share/nginx/html && \
+    chmod -R 755 /usr/share/nginx/html
+
+# Expose port
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
