@@ -1,15 +1,7 @@
-FROM nginx:alpine
-
-# Remove default config
+FROM nginx
+RUN rm -rf /usr/share/nginx/html/index.html
+RUN rm -rf /etc/nginx/nginx.conf
 RUN rm -rf /etc/nginx/conf.d/default.conf
-
-# Copy main nginx config
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Copy site config
-COPY default.conf /etc/nginx/conf.d/
-
-# Copy static files
-COPY static /usr/share/nginx/html/
-
-ENV CATALOGUE_HOST=catalogue
+COPY default.conf /etc/nginx/nginx.conf
+ADD static /usr/share/nginx/html/
+ENV CATALOGUE_HOST="catalogue"
