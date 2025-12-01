@@ -22,7 +22,7 @@ RUN mvn clean package -DskipTests
 #
 # Runtime Stage
 #
-FROM openjdk:8-jre-slim  # Changed to JRE (smaller image)
+FROM openjdk:8-jre-slim
 
 EXPOSE 8080
 
