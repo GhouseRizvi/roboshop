@@ -1,10 +1,13 @@
-FROM nginx
+FROM nginx:alpine
 
-# Remove default files
-RUN rm -f /usr/share/nginx/html/index.html /etc/nginx/conf.d/default.conf
+# Remove default config
+RUN rm -rf /etc/nginx/conf.d/default.conf
 
-# Copy nginx configuration
-COPY default.conf /etc/nginx/nginx.conf
+# Copy main nginx config
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy site config
+COPY default.conf /etc/nginx/conf.d/
 
 # Copy static files
 COPY static /usr/share/nginx/html/
