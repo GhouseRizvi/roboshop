@@ -9,7 +9,7 @@ RUN dnf update -y && \
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy nginx configuration
-#COPY default.conf /etc/nginx/nginx.conf
+COPY default.conf /etc/nginx/nginx.conf
 
 # Copy static files
 COPY static /usr/share/nginx/html
