@@ -15,7 +15,7 @@ RUN mvn package
 #
 # Run
 #
-FROM eclipse-temurin:8-jdk
+FROM amazoncorretto:8
 
 EXPOSE 8080
 
@@ -27,3 +27,4 @@ ENV DB_HOST=mysql
 COPY --from=build /opt/shipping/target/shipping-1.0.jar shipping.jar
 
 CMD [ "java", "-Xmn256m", "-Xmx768m", "-jar", "shipping.jar" ]
+
