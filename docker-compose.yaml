@@ -21,6 +21,7 @@ services:
       - catalogue
       - user
       - cart
+      - shipping
   user:
     image: user:v1
     container_name: user
@@ -37,4 +38,13 @@ services:
     depends_on:
       - redis
       - catalogue
+  mysql:
+    image: mysql:v1
+    container_name: mysql
+
+  shipping:
+    image: shipping:v1
+    container_name: shipping
+    depends_on:
+      - mysql
     
