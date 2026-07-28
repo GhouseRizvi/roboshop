@@ -28,4 +28,11 @@ services:
   redis:
     image: redis:alpine
     container_name: redis
+
+  cart:
+    image: cart:v1
+    container_name: cart
+    depends_on:
+      - redis
+      - catalogue
     
