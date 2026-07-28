@@ -23,7 +23,6 @@ services:
     image: user:v1
     container_name: user
     depends_on:
-      - catalogue
       - mongodb
       - redis
   redis:
